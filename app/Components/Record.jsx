@@ -36,7 +36,7 @@ const Record = ({ doctor ,navigation}) => {
 export default Record;
 const styles = StyleSheet.create({
   Container: {
-    width: "100%",
+    width: "95%",
     backgroundColor: "#fff",
     backgroundColor: "#fff",
     elevation: 1.5,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   Username: {
     fontSize: 17,
-    color: "#348578",
+    color: "#00A57A",
     marginBottom: 5,
   },
   Hello: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   btn: {
-    backgroundColor: "#348578",
+    backgroundColor: "#00A57A",
     justifyContent: "center",
     alignItems: "center",
     padding: 10,

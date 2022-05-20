@@ -16,23 +16,24 @@ const ScreenEntity = () => {
 export default ScreenEntity;
 const styles = StyleSheet.create({
   ScreenEntity: {
-    width: "90%",
-    paddingTop: 20,
+    width: "100%",
+    padding: 20,
+    paddingTop:40,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop:25
+    backgroundColor:"#00A57A"
 
   },
   Username: {
     fontSize: 20,
-    color: "#348578",
+    color: "#ffff",
     fontFamily: "Heebo",
     letterSpacing: 0.5,
     fontWeight:"700"
   },
   Hello: {
     fontSize: 15,
-    color: "#348578",
+    color: "#ffff",
     fontFamily: "Heebo",
     fontWeight: "700",
     letterSpacing: 0.7,

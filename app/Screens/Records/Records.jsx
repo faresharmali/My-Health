@@ -7,6 +7,7 @@ import {
   Text,
   StatusBar,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { useState } from "react";
 import Doctor1 from "../../../assets/Doctor1.png";
@@ -44,22 +45,21 @@ const Docs = [
     pic: Doctor4,
     date: "03/03/2022",
   },
- 
 ];
 export default function Records({ route, navigation }) {
-  const [isActive, setActive] = useState(1);
   return (
     <View style={styles.container}>
       <View style={styles.Entity}>
         <Text style={styles.EntityText}>My Records</Text>
       </View>
 
-      <View style={styles.scheduleContainer}>
+      <ScrollView contentContainerStyle={{alignItems:"center",}} style={styles.scheduleContainer}>
         {Docs.map((d) => (
-            <Record key={d.name} doctor={d} navigation={navigation} />
-            ))}
-      </View>
-            <BottomBar navigation={navigation} />
+          <Record key={d.name} doctor={d} navigation={navigation} />
+        ))}
+    
+      </ScrollView>
+      <BottomBar navigation={navigation} />
     </View>
   );
 }
@@ -67,20 +67,29 @@ export default function Records({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#00A57A",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: 20,
   },
 
   EntityText: {
     fontSize: 20,
     fontWeight: "700",
-    color: "#348578",
+    color: "#fff",
     marginTop: 25,
   },
 
+  Entity: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
   scheduleContainer: {
-    width: "95%",
+    backgroundColor: "#f8f8f8",
+    width: "100%",
+    maxHeight: "82.9%",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 });

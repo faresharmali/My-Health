@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   Entity: {
     width: "100%",
     height: "17%",
-    backgroundColor: "#348578",
+    backgroundColor: "#00A57A",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     alignItems: "center",
@@ -151,25 +151,25 @@ const styles = StyleSheet.create({
   },
   docName: {
     fontSize: 17,
-    color: "#348578",
+    color: "#00A57A",
     fontWeight: "700",
   },
   docSpeciality: {
     fontSize: 15,
-    color: "#348578",
+    color: "#00A57A",
     fontWeight: "600",
   },
 
   number: {
     fontSize: 17,
     fontWeight: "700",
-    color: "#348578",
+    color: "#00A57A",
     marginTop: 5,
   },
   PreviewTitle: {
     fontSize: 17,
     fontWeight: "700",
-    color: "#348578",
+    color: "#00A57A",
     marginBottom: 10,
   },
   docPreview: {
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 19,
     marginTop: 10,
-    color: "#348578",
+    color: "#00A57A",
     fontWeight: "700",
   },
   Record: {

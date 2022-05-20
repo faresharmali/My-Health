@@ -1,30 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image,Keyboard } from "react-native";
 import styles from "../Styles.js";
-import Logo from "../../assets/Logo4.png";
 import { Input, Stack, Icon } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
-
+import Docs from "../../assets/avatars/Docs.png";
+import { LoginUSer } from "../api/auth.js";
 export default function Login({ navigation, PageHandler }) {
-  const Login = () => {
-    PageHandler(2);
+  const [userInput, setUserInput] = useState({
+    email: "",
+    password: "",
+  });
+  const Login =async () => {
+    Keyboard.dismiss()
+    const Response=await LoginUSer(userInput)
+    console.log(Response);
   };
 
+  const handleUserInput = (Field, Input) => {
+    setUserInput({ ...userInput, [Field]: Input });
+  };
   return (
-    <View style={styles.container}>
+    <View style={styles.LoginPagecontainer}>
       <View style={styles.logoContainer}>
-        <Image style={styles.Logo} source={Logo} />
-
-        <Text style={styles.LoginTitle}>HealthCare </Text>
+        <Image style={styles.LoginIllustration} source={Docs} />
         <View style={styles.FormContainer}>
-          <Text style={styles.LoginSecondTitle}>Welcome</Text>
-          <Text style={styles.secondTitle}>
-            Please provide your login credentials
+          <Text style={styles.LoginSecondTitle}>
+            <Text style={{ color: "#00A57A" }}>Log in</Text> to your account
           </Text>
-
-          <Stack space={4} w="100%" alignItems="center">
+          <Stack marginTop={8} space={4} w="100%" alignItems="center">
+            <Text style={styles.label}>Email Address</Text>
             <Input
               InputLeftElement={
                 <Icon
@@ -32,7 +38,7 @@ export default function Login({ navigation, PageHandler }) {
                   as={<MaterialIcons name="mail" />}
                   size={5}
                   ml="2"
-                  color="muted.400"
+                  color="#00A57A"
                 />
               }
               style={styles.input}
@@ -41,9 +47,14 @@ export default function Login({ navigation, PageHandler }) {
                 md: "25%",
               }}
               h={50}
+              backgroundColor="#fff"
               textAlign="left"
               placeholder="Email"
+              fontSize={17}
+              onChangeText={(Input) => handleUserInput("email", Input)}
             />
+            <Text style={styles.label}>Password</Text>
+
             <Input
               InputLeftElement={
                 <Icon
@@ -51,18 +62,23 @@ export default function Login({ navigation, PageHandler }) {
                   as={<MaterialIcons name="lock" />}
                   size={5}
                   ml="2"
-                  color="muted.400"
+                  color="#00A57A"
                 />
               }
               w={{
                 base: "100%",
                 md: "25%",
               }}
+              type={"password"}
+
               h={50}
               textAlign="left"
+              backgroundColor="#fff"
               placeholder="Password"
+              onChangeText={(Input) => handleUserInput("password", Input)}
             />
           </Stack>
+          <Text style={styles.ForgotPassword}>Forgot Password ?</Text>
           <Button
             style={styles.Button}
             mode="contained"
@@ -70,7 +86,6 @@ export default function Login({ navigation, PageHandler }) {
           >
             <Text style={{ fontSize: 16, marginLeft: 10 }}>Login</Text>
           </Button>
-          <Text style={styles.ForgotPassword}>Forgot Password ?</Text>
         </View>
       </View>
     </View>

@@ -7,76 +7,85 @@ module.exports = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
+  LoginPagecontainer: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "#00A57A",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
 
   // login page Design :
   logoContainer: {
     paddingTop: "15%",
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#00A57A",
     minHeight: "100%",
   },
   FormContainer: {
-    backgroundColor: "#fff",
-    width: "85%",
+    backgroundColor: "#F8F8F8",
+    width: "100%",
+    height: "85%",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     padding: 40,
-    borderRadius: 20,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     marginTop: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 1.41,
-
-    elevation: 1.5,
+    position: "absolute",
+    bottom: 0,
   },
   LoginTitle: {
     fontSize: 25,
     margin: 10,
-    color: "#000",
+    color: "#fff",
     margin: 0,
+    fontFamily:"RobotoFlex-wght",
+
   },
   Logo: {
     width: 90,
     height: 75,
   },
+  LoginIllustration: {
+    width: "60%",
+    height: 130,
+    position: "absolute",
+    bottom: "84%",
+  },
 
   Button: {
     flexDirection: "row-reverse",
     height: 50,
-    width: 230,
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#348578",
+    backgroundColor: "#00A57A",
     marginTop: 25,
-    borderRadius: 60,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 1.41,
-    elevation: 6,
+    borderRadius: 10,
+    fontFamily:"RobotoFlex-wght",
 
   },
   LoginSecondTitle: {
-    fontSize: 25,
+    fontSize: 22,
     marginBottom: 10,
     color: "#313552",
+    fontFamily: "RobotoFlex-wght",
   },
   ForgotPassword: {
     marginTop: 20,
     fontSize: 15,
-
+    width:"100%",
+    textAlign:"right"
   },
   secondTitle: {
     marginBottom: 25,
     fontSize: 15,
-
+  },
+  label: {
+    width: "100%",
+    fontWeight: "600",
+    fontFamily: "RobotoFlex-wght",
   },
 });

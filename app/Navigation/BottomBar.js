@@ -34,21 +34,6 @@ export default function BottomBar(props) {
           </View>
         </TouchableOpacity>
 
-
-        <TouchableOpacity
-          onPress={() => props.navigation.navigate("Schedule")}
-        >
-          <View style={styles.bottomBarITem}>
-            <Icon
-              as={Fontisto }
-              name="date"
-              color={"#fff"}
-              size={4}
-            />
-
-            <Text style={styles.bottomBarITemText}>Schedule</Text>
-          </View>
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => props.navigation.navigate("Doctors")}
         >
@@ -93,7 +78,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   BottomBar: {
-    backgroundColor: "#348578",
+    backgroundColor: "#00A57A",
     width: "100%",
     height: 50,
     borderTopRightRadius:15,
@@ -120,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 50,
     height: 50,
-    backgroundColor: "#348578",
+    backgroundColor: "#00A57A",
     borderRadius: 35,
     shadowColor: "#000",
     elevation: 3,

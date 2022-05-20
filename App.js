@@ -15,6 +15,7 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     "Cairo": require("./assets/fonts/Cairo.ttf"),
     "Heebo": require("./assets/fonts/Heebo.ttf"),
+    "RobotoFlex-wght": require("./assets/fonts/RobotoFlex-wght.ttf"),
   });
   if (!fontsLoaded) {
     return <Text>Loading</Text>;

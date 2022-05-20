@@ -1,8 +1,7 @@
 import "react-native-gesture-handler";
 import React from "react";
 import BottomBar from "../../Navigation/BottomBar";
-import { StyleSheet, View, Text, StatusBar } from "react-native";
-import { useState } from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import ScreenEntity from "../../Components/ScreenEntity";
 import { Icon } from "native-base";
 import {
@@ -28,37 +27,37 @@ export default function Doctors({ navigation }) {
       name: "Ahmed",
       phone: "0660818412",
       Speciality: "Heart Specialist - Bouira",
-      pic:  Doctor1 ,
+      pic: Doctor1,
     },
     {
       name: "Farida",
       phone: "0660818412",
       Speciality: "Heart Specialist - Bouira",
-      pic: Doctor2 ,
+      pic: Doctor2,
     },
     {
       name: "Asmahan",
       phone: "0660818412",
       Speciality: "Heart Specialist - Bouira",
-      pic:  Doctor3 ,
+      pic: Doctor3,
     },
     {
       name: "Islam",
       phone: "0660818412",
       Speciality: "Heart Specialist - Bouira",
-      pic:  Doctor4 ,
+      pic: Doctor4,
     },
     {
       name: "Yazid",
       phone: "0660818412",
       Speciality: "Heart Specialist - Bouira",
-      pic:  Doctor5 ,
+      pic: Doctor5,
     },
   ];
   return (
     <View style={styles.container}>
-
       <ScreenEntity />
+      <View style={styles.content}>
       <View style={styles.Input}>
         <Input
           InputLeftElement={
@@ -84,12 +83,11 @@ export default function Doctors({ navigation }) {
       <Text style={styles.DoctorsTitle}>Top Doctors</Text>
       <View style={styles.doctorsList}>
         {Docs.map((d) => (
-          <DoctorPreview
-            navigation={navigation}
-            doctor={d}
-          />
+          <DoctorPreview navigation={navigation} doctor={d} />
         ))}
       </View>
+      </View>
+    
       <BottomBar navigation={navigation} />
     </View>
   );
@@ -98,27 +96,34 @@ export default function Doctors({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#00A57A",
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor:"#fff"
   },
   Input: {
     marginTop: 20,
-    backgroundColor: "#34857811",
-    borderRadius: 10,
     marginBottom: 20,
+ 
+  },
+  content: {
+   width:"100%",
+   height:"100%",
+   backgroundColor:"#fff",
+   alignItems:"center",
+   borderTopLeftRadius: 20,
+   borderTopRightRadius: 20,
   },
   DoctorsTitle: {
     width: "90%",
     fontSize: 17,
     marginBottom: 10,
-    color: "#348578",
+    color: "#00A57A",
     fontWeight: "700",
     letterSpacing: 0.5,
   },
   doctorsList: {
     width: "90%",
     height: "50%",
+    backgroundColor:"#fff"
   },
 });
