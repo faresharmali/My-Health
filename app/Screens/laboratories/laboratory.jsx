@@ -8,16 +8,17 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import docimg from "../../../assets/Doctor1.png";
+import { useSelector } from "react-redux";
+
 import { Icon } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import map from "../../../assets/map.png";
 import { useDispatch } from "react-redux";
 import { giveAccess, revokeAccess, getUser } from "../../api/doctor";
-import { useSelector } from "react-redux";
+import docimg from "../../../assets/Doctor1.png";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function DoctorProfile({ route, navigation }) {
+export default function Laboratory({ route, navigation }) {
   const LoggedUser = useSelector((state) => state.LoggedUser);
   const { doctor } = route.params;
   const action = (doc) => {
@@ -30,8 +31,8 @@ export default function DoctorProfile({ route, navigation }) {
 
   const give = async () => {
     let api = await AsyncStorage.getItem("api");
-    const res = await giveAccess(  api,{
-    
+    console.log("from front", api);
+    const res = await giveAccess(api, {
       PatientId: LoggedUser.user._id,
       DocId: doctor._id,
     });
@@ -43,9 +44,7 @@ export default function DoctorProfile({ route, navigation }) {
   };
   const revoke = async () => {
     let api = await AsyncStorage.getItem("api");
-    const res = await revokeAccess(  api,{
-    
-
+    const res = await revokeAccess(api, {
       PatientId: LoggedUser.user._id,
       DocId: doctor._id,
     });
@@ -69,15 +68,15 @@ export default function DoctorProfile({ route, navigation }) {
               color="#fff"
             />
           </TouchableOpacity>
-
-          <Text style={styles.details}>Doctor Details</Text>
+          <Text style={styles.details}>Facility Details</Text>
         </View>
         <View style={styles.docDetails}>
           <View style={styles.docInfos}>
             <Text style={styles.docName}>
-              Dr . {doctor.firstName} {doctor.lastName}
+              {" "}
+              {doctor.firstName} {doctor.lastName}
             </Text>
-            <Text style={styles.docSpeciality}> {doctor.address}</Text>
+            <Text style={styles.docSpeciality}>{doctor.address}</Text>
           </View>
           <Image style={styles.docImage} source={docimg} />
         </View>
@@ -98,7 +97,7 @@ export default function DoctorProfile({ route, navigation }) {
         </View>
       </View>
       <View style={styles.docPreview}>
-        <Text style={styles.PreviewTitle}>About Doctor</Text>
+        <Text style={styles.PreviewTitle}>About Facility</Text>
         <Text style={styles.Preview}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

@@ -3,14 +3,22 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { Fontisto, AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Icon } from "native-base";
 import Doctor1 from "../../assets/Doctor1.png";
-const Record = ({ doctor ,navigation}) => {
+const Record = ({ record, navigation }) => {
   return (
     <View style={styles.Container}>
       <View style={styles.Dataontainer}>
-        <Image style={styles.ProfilePic} source={doctor.pic} />
+        <Image style={styles.ProfilePic} source={Doctor1} />
         <View>
-          <Text style={styles.Username}>Dr . {doctor.name}</Text>
-          <Text style={styles.Speciality}>{doctor.Speciality}</Text>
+          <Text style={styles.Username}>
+            Dr .{" "}
+            {record.doctor.trim() != "" &&
+              JSON.parse(record.doctor).user.firstName}
+          </Text>
+          <Text style={styles.Speciality}>
+            {" "}
+            {record.doctor.trim() != "" &&
+              JSON.parse(record.doctor).user.speciality}
+          </Text>
         </View>
       </View>
       <View style={styles.scheduleDate}>
@@ -22,10 +30,13 @@ const Record = ({ doctor ,navigation}) => {
             ml="2"
             color="#348578"
           />
-          <Text style={styles.dateInfos}>{doctor.date}</Text>
+          <Text style={styles.dateInfos}>{record.date}</Text>
         </View>
 
-        <TouchableOpacity onPress={()=>navigation.navigate("RecordDetails",{doctor})} style={styles.btn}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RecordDetails", { record })}
+          style={styles.btn}
+        >
           <Text style={styles.btnText}>Check</Text>
         </TouchableOpacity>
       </View>
@@ -58,7 +69,7 @@ const styles = StyleSheet.create({
   },
   Username: {
     fontSize: 17,
-    color: "#00A57A",
+    color: "#03968C",
     marginBottom: 5,
   },
   Hello: {
@@ -87,7 +98,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   btn: {
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
@@ -104,10 +115,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#34857811",
     height: 40,
     borderRadius: 10,
-    paddingLeft:20,
-    paddingRight:20,
-
-
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   dateInfos: {
     marginLeft: 5,

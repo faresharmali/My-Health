@@ -1,32 +1,38 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import Man from "../../assets/avatars/ProfilePic.png";
 import React, { useState } from "react";
 import edit from "../../assets/icons/edit.png";
 import lock from "../../assets/icons/password-code.png";
-import customer from "../../assets/icons/support.png";
 import arrow from "../../assets/icons/right-arrow.png";
 import arrowLeft from "../../assets/icons/left-arrow.png";
-import logout from "../../assets/icons/log-out.png";
-export default function UserProfile({initialParams}) {
-    console.error("from user prsofule",initialParams)
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+export default function UserProfile({ PageHandler,LoggedUser, navigation }) {
+  const logout = async () => {
+    await AsyncStorage.removeItem("loggedUser");
+PageHandler(1);
+  };
+  const {user}=LoggedUser
   return (
     <View style={styles.container}>
       <View style={styles.ProfileContainer}>
         <View style={styles.backButton}>
           <Text style={styles.BackText}>Back</Text>
           <TouchableOpacity
-            onPress={() => props.navigation.goBack()}
+            onPress={() => navigation.goBack()}
             style={styles.circle}
           >
             <Image style={styles.arrow2} source={arrowLeft} />
           </TouchableOpacity>
         </View>
         <Image source={Man} style={styles.profilePic} />
-        <Text style={styles.userName}>Username</Text>
+        <Text style={styles.userName}>{user.firstName} {user.lastName}</Text>
 
         <View style={styles.sectionContainer}>
-          <TouchableOpacity style={styles.section}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("UpdateUserInfos")}
+            style={styles.section}
+          >
             <View style={styles.sectionTitle}>
               <Image style={styles.sectionIcon} source={edit} />
               <Text style={styles.sectionText}>
@@ -36,22 +42,19 @@ export default function UserProfile({initialParams}) {
 
             <Image style={styles.arrow} source={arrow} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.section}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("UpdatePassword")}
+            style={styles.section}
+          >
             <View style={styles.sectionTitle}>
               <Image style={styles.sectionIcon} source={lock} />
               <Text style={styles.sectionText}>Change password</Text>
             </View>
             <Image style={styles.arrow} source={arrow} />
           </TouchableOpacity>
-          <TouchableOpacity style={{ ...styles.section, borderBottomWidth: 0 }}>
-            <View style={styles.sectionTitle}>
-              <Image style={styles.sectionIcon} source={customer} />
-              <Text style={styles.sectionText}>Report a problem</Text>
-            </View>
-            <Image style={styles.arrow} source={arrow} />
-          </TouchableOpacity>
+         
         </View>
-        <TouchableOpacity onPress={()=>initialParams.PageHandler(1)} style={styles.Logout}>
+        <TouchableOpacity onPress={logout} style={styles.Logout}>
           <Image style={styles.LogoutIcon} source={logout} />
 
           <Text style={styles.sectionText}>Sing out</Text>
@@ -67,7 +70,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     zIndex: 10,
     backgroundColor: "#34857811",
-
   },
   ProfileContainer: {
     marginTop: "15%",

@@ -60,19 +60,7 @@ export default function DrawerContent(props) {
             props.navigation.navigate("Administration");
           }}
         />
-        <DrawerItem
-          icon={() => (
-            <Icon
-              style={styles.icon}
-              as={<MaterialIcons name="admin-panel-settings" />}
-            />
-          )}
-          label="Schedule"
-          labelStyle={styles.label}
-          onPress={() => {
-            props.navigation.navigate("Administration");
-          }}
-        />
+       
       
       </Drawer.Section>
       <TouchableOpacity style={styles.logoutContainer}> 

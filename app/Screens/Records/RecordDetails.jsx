@@ -6,12 +6,11 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity,
-  StatusBar,
+
 } from "react-native";
 
 import { Icon } from "native-base";
-import { AntDesign,MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import map from "../../../assets/map.png";
 export default function RecordDetails({ route, navigation }) {
   return (
@@ -29,10 +28,18 @@ export default function RecordDetails({ route, navigation }) {
         </View>
         <View style={styles.docDetails}>
           <View style={styles.docInfos}>
-            <Text style={styles.docName}>Dr . {route.params.doctor.name}</Text>
-            <Text style={styles.docSpeciality}>Heart Specialist - Algiers</Text>
+            <Text style={styles.docName}>
+              Dr .{" "}
+              {route.params.record.doctor.trim() != "" &&
+                JSON.parse(route.params.record.doctor).user.firstName}
+            </Text>
+            <Text style={styles.docSpeciality}>
+              {" "}
+              {route.params.record.doctor.trim() != "" &&
+                JSON.parse(route.params.record.doctor).user.speciality}{" "}
+              -{JSON.parse(route.params.record.doctor).user.address}
+            </Text>
           </View>
-          <Image style={styles.docImage} source={route.params.doctor.pic} />
         </View>
       </View>
 
@@ -42,62 +49,83 @@ export default function RecordDetails({ route, navigation }) {
         <View style={styles.Record}>
           <Icon
             style={{ marginRight: 10 }}
-            as={<MaterialCommunityIcons  name="star-four-points" />}
+            as={<MaterialCommunityIcons name="star-four-points" />}
             size={6}
             ml="2"
             color="#348578"
           />
-          <Text style={styles.recordItem}>Consultation Date : 25/08/2015</Text>
+          <Text style={styles.recordItem}>
+            Consultation Date :{" "}
+            {route.params.record.lastVisits.trim() != "" &&
+              new Date(
+                JSON.parse(route.params.record.lastVisits)
+              ).getFullYear() +
+                "/" +
+                (new Date(
+                  JSON.parse(route.params.record.lastVisits)
+                ).getMonth() +
+                  1) +
+                "/" +
+                new Date(JSON.parse(route.params.record.lastVisits)).getDate()}
+          </Text>
         </View>
         <View style={styles.Record}>
           <Icon
             style={{ marginRight: 10 }}
-            as={<MaterialCommunityIcons  name="star-four-points" />}
+            as={<MaterialCommunityIcons name="star-four-points" />}
             size={6}
             ml="2"
             color="#348578"
           />
-          <Text style={styles.recordItem}>Allergies : Pollen Allergy</Text>
+          <Text style={styles.recordItem}>
+            Allergies : {route.params.record.Allergies}
+          </Text>
         </View>
         <View style={styles.Record}>
           <Icon
             style={{ marginRight: 10 }}
-            as={<MaterialCommunityIcons  name="star-four-points" />}
+            as={<MaterialCommunityIcons name="star-four-points" />}
             size={6}
             ml="2"
             color="#348578"
           />
-          <Text style={styles.recordItem}>Diagnosis : headache</Text>
+          <Text style={styles.recordItem}>
+            Diagnosis : {route.params.record.Diagnosis}
+          </Text>
         </View>
         <View style={styles.Record}>
           <Icon
             style={{ marginRight: 10 }}
-            as={<MaterialCommunityIcons  name="star-four-points" />}
+            as={<MaterialCommunityIcons name="star-four-points" />}
             size={6}
             ml="2"
             color="#348578"
           />
-          <Text style={styles.recordItem}>BloodGroup : AB+</Text>
+          <Text style={styles.recordItem}>
+            BloodGroup : {route.params.record.bloodGroup}
+          </Text>
         </View>
         <View style={styles.Record}>
           <Icon
             style={{ marginRight: 10 }}
-            as={<MaterialCommunityIcons  name="star-four-points" />}
+            as={<MaterialCommunityIcons name="star-four-points" />}
             size={6}
             ml="2"
             color="#348578"
           />
-          <Text style={styles.recordItem}>Treatment  : Doliprane</Text>
+          <Text style={styles.recordItem}>
+            Treatment : {route.params.record.treatment}
+          </Text>
         </View>
         <View style={styles.Record}>
           <Icon
             style={{ marginRight: 10 }}
-            as={<MaterialCommunityIcons  name="star-four-points" />}
+            as={<MaterialCommunityIcons name="star-four-points" />}
             size={6}
             ml="2"
             color="#348578"
           />
-          <Text style={styles.recordItem}>Obervation  : None</Text>
+          <Text style={styles.recordItem}>Obervation : None</Text>
         </View>
       </View>
     </View>
@@ -125,7 +153,7 @@ const styles = StyleSheet.create({
   Entity: {
     width: "100%",
     height: "17%",
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     alignItems: "center",
@@ -151,25 +179,25 @@ const styles = StyleSheet.create({
   },
   docName: {
     fontSize: 17,
-    color: "#00A57A",
+    color: "#03968C",
     fontWeight: "700",
   },
   docSpeciality: {
     fontSize: 15,
-    color: "#00A57A",
+    color: "#03968C",
     fontWeight: "600",
   },
 
   number: {
     fontSize: 17,
     fontWeight: "700",
-    color: "#00A57A",
+    color: "#03968C",
     marginTop: 5,
   },
   PreviewTitle: {
     fontSize: 17,
     fontWeight: "700",
-    color: "#00A57A",
+    color: "#03968C",
     marginBottom: 10,
   },
   docPreview: {
@@ -193,14 +221,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 19,
     marginTop: 10,
-    color: "#00A57A",
+    color: "#03968C",
     fontWeight: "700",
   },
   Record: {
     flexDirection: "row",
     marginTop: 20,
   },
-  recordItem:{
-      fontSize:17
-  }
+  recordItem: {
+    fontSize: 17,
+  },
 });

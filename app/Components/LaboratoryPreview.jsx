@@ -1,36 +1,36 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image ,TouchableOpacity} from "react-native";
 import {
- 
+  MaterialCommunityIcons,
+  Entypo,
   MaterialIcons,
 } from "@expo/vector-icons";
 import { Icon } from "native-base";
 import docimg from "../../assets/Doctor1.png";
 
-const DoctorPreview = ({doctor,navigation}) => {
+export const LabPreview = ({doctor,navigation}) => {
   return (
-    <TouchableOpacity style={styles.Container} onPress={()=>navigation.navigate("DoctorProfile",{doctor})}>
-      <Image style={styles.ProfilePic} source={docimg} />
-      <View>
-        <Text style={styles.Username}>Dr . {doctor.firstName} {doctor.lastName}</Text>
-        <Text style={styles.Speciality}>{doctor.address}</Text>
-        <View style={styles.PhoneContainer}>
-          <Icon
-            as={<MaterialIcons name="phone" />}
-            size={4}
-            style={{marginLeft:-1}}
-            ml="2"
-            color="#348578"
-          />
-          <Text style={styles.Phone}> {doctor.contact}</Text>
-          <View />
-        </View>
+    <TouchableOpacity style={styles.Container} onPress={()=>navigation.navigate("Laboratory",{doctor})}>
+    <Image style={styles.ProfilePic} source={docimg} />
+    <View>
+      <Text style={styles.Username}>{doctor.firstName} {doctor.lastName}</Text>
+      <Text style={styles.Speciality}>{doctor.address}</Text>
+      <View style={styles.PhoneContainer}>
+        <Icon
+          as={<MaterialIcons name="phone" />}
+          size={4}
+          style={{marginLeft:-1}}
+          ml="2"
+          color="#348578"
+        />
+        <Text style={styles.Phone}> {doctor.contact}</Text>
+        <View />
       </View>
-    </TouchableOpacity>
+    </View>
+  </TouchableOpacity>
   );
 };
 
-export default DoctorPreview;
 const styles = StyleSheet.create({
   Container: {
     width: "100%",

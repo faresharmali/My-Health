@@ -10,7 +10,7 @@ module.exports = StyleSheet.create({
   LoginPagecontainer: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     alignItems: "center",
     justifyContent: "flex-start",
   },
@@ -20,7 +20,7 @@ module.exports = StyleSheet.create({
     paddingTop: "15%",
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     minHeight: "100%",
   },
   FormContainer: {
@@ -61,7 +61,7 @@ module.exports = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     marginTop: 25,
     borderRadius: 10,
     fontFamily:"RobotoFlex-wght",
@@ -88,4 +88,20 @@ module.exports = StyleSheet.create({
     fontWeight: "600",
     fontFamily: "RobotoFlex-wght",
   },
+  logoimg:{
+    width:80,
+    height:70,
+    marginBottom:10
+  },
+  loading:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor: "#03968C",
+
+  },
+  loadingText:{
+    color:"#fff",
+    fontSize:17
+  }
 });

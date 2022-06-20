@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import ProfilePic from "../../assets/avatars/ProfilePic.png";
-const ScreenEntity = () => {
+const ScreenEntity = ({user}) => {
   return (
     <View style={styles.ScreenEntity}>
       <View>
         <Text style={styles.Hello}>Hello</Text>
-        <Text style={styles.Username}>Username 👋</Text>
+        <Text style={styles.Username}>{user.firstName} {user.lastName}👋</Text>
       </View>
       <Image style={styles.ProfilePic} source={ProfilePic} />
     </View>
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     paddingTop:40,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor:"#00A57A"
+    backgroundColor:"#03968C"
 
   },
   Username: {

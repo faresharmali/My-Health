@@ -1,14 +1,13 @@
 import { combineReducers } from "redux";
-import FamilyReducer from "./FamilyReducer.js";
-import UserReducer from "./UsersReducer.js";
-import InformationsReducer from "./InformationsReducer.js";
-import MeetingReducer from "./MeetingReducer.js";
-import DonatorsReducer from "./DonatorsReducer.js";
+import DoctorReducer from "./DoctorReducer";
+import LaboratoryReducer from "./LaboratoryReducer";
+import RecordsReducer from "./RecordsReducer";
+import authReducer from "./authReducer";
 export default reducer = combineReducers({
-    users:UserReducer,
-    Families:FamilyReducer,
-    Informations:InformationsReducer,
-    Meetings:MeetingReducer,
-    Donators:DonatorsReducer,
+    Doctors:DoctorReducer,
+    Laboratories:LaboratoryReducer,
+    Records:RecordsReducer,
+    LoggedUser:authReducer
+
 
 })

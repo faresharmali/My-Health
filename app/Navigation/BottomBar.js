@@ -8,11 +8,10 @@ import {
 } from "react-native";
 import { Icon } from "native-base";
 import {
-  FontAwesome5 ,
   MaterialCommunityIcons,
-  Fontisto ,
   Ionicons ,
   FontAwesome,
+  FontAwesome5
 } from "@expo/vector-icons";
 import React from "react";
 
@@ -34,6 +33,20 @@ export default function BottomBar(props) {
           </View>
         </TouchableOpacity>
 
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate("Laboratories")}
+        >
+          <View style={styles.bottomBarITem}>
+            <Icon
+              as={FontAwesome}
+              name="hospital-o"
+              color={"#ffff"}
+              size={4}
+            />
+
+            <Text style={styles.bottomBarITemText}>Facilities</Text>
+          </View>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => props.navigation.navigate("Doctors")}
         >
@@ -78,7 +91,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   BottomBar: {
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     width: "100%",
     height: 50,
     borderTopRightRadius:15,
@@ -105,7 +118,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 50,
     height: 50,
-    backgroundColor: "#00A57A",
+    backgroundColor: "#03968C",
     borderRadius: 35,
     shadowColor: "#000",
     elevation: 3,

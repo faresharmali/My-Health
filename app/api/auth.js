@@ -1,12 +1,10 @@
-export const LoginUSer = async (data) => {
-    // temporary logic
-  if (data.email == "faresharmali3@gmail.com") {
-    if (data.password == "123456789") {
-      return { ok: true };
-    } else {
-      return { ok: false, message: "Wrong password" };
-    }
-  } else {
-    return { ok: false, message: "This email didn't match any user" };
+const axios = require("axios");
+export const LogUser = async (data) => {
+  const api = `http://${data.api}:8080/api/auth/login`;
+  try {
+    const res = await axios.post(api, data);
+    return res;
+  } catch (e) {
+    console.error("error", e);
   }
 };
